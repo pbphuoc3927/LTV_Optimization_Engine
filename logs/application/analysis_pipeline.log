@@ -1,0 +1,36 @@
+2025-08-18 09:39:33,452 | INFO | 🔧 Loading raw data ...
+2025-08-18 09:39:35,066 | INFO | 📌 Building snapshot + labels (LTV 90d) ...
+2025-08-18 09:39:35,216 | INFO | Snapshot date: 2027-05-19
+2025-08-18 09:39:35,217 | INFO | 🧮 Feature engineering (RFM, channel share, interpurchase) ...
+2025-08-18 09:39:46,069 | ERROR | Pipeline failed: cannot insert customer_id, already exists
+Traceback (most recent call last):
+  File "c:\Users\phuoc\LTV_Optimization_Engine\scripts\analysis\analysis_pipeline.py", line 279, in <module>
+    main()
+  File "c:\Users\phuoc\LTV_Optimization_Engine\scripts\analysis\analysis_pipeline.py", line 222, in main
+    rfm = _rfm_features(hist, ref_date=snapshot)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\phuoc\LTV_Optimization_Engine\scripts\analysis\analysis_pipeline.py", line 110, in _rfm_features
+    .groupby(level=0).apply(lambda s: s / s.sum()).reset_index(name="channel_share"))
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phuoc\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\series.py", line 1671, in reset_index
+    return df.reset_index(
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\phuoc\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 6220, in reset_index
+    new_obj.insert(
+  File "C:\Users\phuoc\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 4931, in insert
+    raise ValueError(f"cannot insert {column}, already exists")
+ValueError: cannot insert customer_id, already exists
+2025-08-18 09:42:10,839 | INFO | 🔧 Loading raw data ...
+2025-08-18 09:42:12,965 | INFO | 📌 Building snapshot + labels (LTV 90d) ...
+2025-08-18 09:42:13,289 | INFO | Snapshot date: 2027-05-19
+2025-08-18 09:42:13,293 | INFO | 🧮 Feature engineering (RFM, channel share, interpurchase) ...
+2025-08-18 09:42:23,483 | INFO | ✅ Saved RFM: C:\Users\phuoc\LTV_Optimization_Engine\data\processed\rfm.csv
+2025-08-18 09:42:24,056 | INFO | ✅ Saved modeling dataset: C:\Users\phuoc\LTV_Optimization_Engine\data\processed\features_training.csv
+2025-08-18 09:42:24,056 | INFO | 📊 Cohort retention heatmap data ...
+2025-08-18 09:42:24,858 | INFO | ✅ Saved cohorts: C:\Users\phuoc\LTV_Optimization_Engine\data\processed\cohorts_retention.csv
+2025-08-18 09:42:24,858 | INFO | 🤖 Training model ...
+2025-08-18 09:43:08,067 | INFO | ✅ Saved predictions: C:\Users\phuoc\LTV_Optimization_Engine\outputs\predictions\predictions.csv
+2025-08-18 09:43:08,069 | INFO | ✅ Saved feature importances: C:\Users\phuoc\LTV_Optimization_Engine\data\processed\feature_importances.csv
+2025-08-18 09:43:08,071 | INFO | ✅ Saved decile lift: C:\Users\phuoc\LTV_Optimization_Engine\data\processed\decile_lift.csv
+2025-08-18 09:43:08,072 | INFO | ✅ Metrics: {'mae': 17.14372383988399, 'rmse': 59.900088643220904, 'r2': 0.553316138556314} | C:\Users\phuoc\LTV_Optimization_Engine\models\validation\metrics.json
+2025-08-18 09:43:08,073 | INFO | 🎉 Analysis pipeline completed successfully.

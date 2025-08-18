@@ -1,0 +1,81 @@
+{
+  "generated_at": "2025-08-18T02:52:19.958445Z",
+  "kpis": {
+    "mean_ltv_90d": 20.30276509771759,
+    "median_ltv_90d": 0.0,
+    "top_decile_cum_rev_share": 1.0,
+    "cohort_months_covered": 25,
+    "avg_retention_first_offset": 1.0,
+    "rfm_segment_counts": {
+      "Champions": 12886,
+      "Loyal": 10093,
+      "Potential Loyalist": 9677,
+      "Hibernating": 8790,
+      "At Risk": 8545
+    },
+    "model_mae": 17.14372383988399,
+    "model_rmse": 59.900088643220904,
+    "model_r2": 0.553316138556314
+  },
+  "roi_scenarios": {
+    "conservative": {
+      "name": "conservative",
+      "uplift_pct": 0.02,
+      "target_group_size": 10000,
+      "campaign_cost": 5000.0,
+      "est_incremental_revenue": 4060.5530195435176,
+      "est_margin_gain": 1624.221207817407,
+      "roi": -0.6751557584365185,
+      "currency": "VND"
+    },
+    "base": {
+      "name": "base",
+      "uplift_pct": 0.05,
+      "target_group_size": 10000,
+      "campaign_cost": 20000.0,
+      "est_incremental_revenue": 10151.382548858795,
+      "est_margin_gain": 4060.5530195435185,
+      "roi": -0.7969723490228241,
+      "currency": "VND"
+    },
+    "optimistic": {
+      "name": "optimistic",
+      "uplift_pct": 0.1,
+      "target_group_size": 10000,
+      "campaign_cost": 50000.0,
+      "est_incremental_revenue": 20302.76509771759,
+      "est_margin_gain": 8121.106039087037,
+      "roi": -0.8375778792182592,
+      "currency": "VND"
+    }
+  },
+  "insights": [
+    "Top model drivers (by importance): tenure_days, freq_per_90d, monetary, tx_count, ip_mean, ip_std.",
+    "Top decile captures approximately 100% of near-term revenue (90d).",
+    "RFM segments distribution (top segments): Champions:12886, Loyal:10093, Potential Loyalist:9677.",
+    "Model performance: MAE=17.14, R2=0.553"
+  ],
+  "recommendations": [
+    "Focus immediate retention & upsell campaigns on top-decile customers — high ROI potential.",
+    "Run a pilot retention campaign on top-decile predicted customers with 3 message variants and measure ΔLTV via A/B test.",
+    "Operationalize daily scoring & sync top N lists to CRM for campaign activation; monitor model drift weekly.",
+    "Validate feature stability monthly and retrain model quarterly or when performance drops beyond threshold."
+  ],
+  "referenced_files": {
+    "features": "data\\processed\\features_training.csv",
+    "rfm": "data\\processed\\rfm.csv",
+    "cohorts": "data\\processed\\cohorts_retention.csv",
+    "feature_importances": "data\\processed\\feature_importances.csv",
+    "decile_lift": "data\\processed\\decile_lift.csv",
+    "predictions": "outputs\\predictions\\predictions.csv",
+    "metrics": "models\\validation\\metrics.json"
+  },
+  "charts": [
+    "outputs\\charts\\cohort_retention_heatmap.png",
+    "outputs\\charts\\decile_lift.png",
+    "outputs\\charts\\feature_importance_top15.png",
+    "outputs\\charts\\ltv90_true_vs_pred_density.png",
+    "outputs\\charts\\pred_vs_actual_ltv90.png",
+    "outputs\\charts\\rfm_segment_distribution.png"
+  ]
+}
